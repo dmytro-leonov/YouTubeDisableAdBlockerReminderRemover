@@ -43,7 +43,6 @@ const init = () => {
     const handleMutation = (mutationsList, observer) => {
         const reminder = document.getElementsByTagName("ytd-enforcement-message-view-model")
         if (reminder.length) {
-            document.getElementById("dismiss-button").click()
             // Remove Reminder
             removeReminder(reminder[0]);
         }
