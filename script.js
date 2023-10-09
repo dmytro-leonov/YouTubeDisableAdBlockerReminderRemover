@@ -11,7 +11,7 @@
 
 
 const urlPath = "/watch";
-const logPrefix = "%cYouTube AdBlocker reminder remover:";
+const logPrefix = "%cYouTube disable AdBlocker reminder remover:";
 const logPrefixStyle = "background-color: #a4f5bc; color: #000; font-size: 1.2em;";
 let listenerIsSet = false;
 
