@@ -11,8 +11,9 @@
 
 
 const urlPath = "/watch";
-const logPrefix = '%cYouTube AdBlocker reminder remover:';
-const logPrefixStyle = 'background-color: #a4f5bc; color: #000; font-size: 1.2em;';
+const logPrefix = "%cYouTube AdBlocker reminder remover:";
+const logPrefixStyle = "background-color: #a4f5bc; color: #000; font-size: 1.2em;";
+let listenerIsSet = false;
 
 
 const removeReminder = (reminder) => {
@@ -32,7 +33,7 @@ const removeReminder = (reminder) => {
 
 const init = () => {
     // Check URL
-    if (!window.location.pathname.startsWith(urlPath)) { return }
+    if (!window.location.pathname.startsWith(urlPath) || listenerIsSet) { return }
 
     // Add observer
     // Get a reference to the target ytd-popup-container element
@@ -40,14 +41,11 @@ const init = () => {
 
     // Function to handle the mutation
     const handleMutation = (mutationsList, observer) => {
-        for (const mutation of mutationsList) {
-            if (mutation.type === 'childList') {
-                const reminder = document.getElementsByTagName("ytd-enforcement-message-view-model")
-                if (reminder.length) {
-                    // Remove Reminder
-                    removeReminder(reminder[0]);
-                }
-            }
+        const reminder = document.getElementsByTagName("ytd-enforcement-message-view-model")
+        if (reminder.length) {
+            document.getElementById("dismiss-button").click()
+            // Remove Reminder
+            removeReminder(reminder[0]);
         }
     };
 
@@ -59,6 +57,9 @@ const init = () => {
 
     // Start observing the target ytd-popup-container
     observer.observe(targetContainer, config);
+
+    // Toggle listenerIsSet
+    listenerIsSet = true;
 
     console.info(logPrefix, logPrefixStyle, "Added event listener to popup container");
 }
