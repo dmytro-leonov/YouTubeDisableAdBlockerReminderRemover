@@ -16,7 +16,7 @@ This script removes annoying reminder to disable AdBlocker
    In the Tampermonkey Dashboard, click on the `+` tab to create a new script.
 
 4. **Copy the Script**:
-   Copy the contents of [script.js](https://github.com/Dmytro-Leonov/YouTubeDisableAdBlockerReminderRemover/blob/main/script.js).
+   Copy the contents of [script.js](script.js).
 
 5. **Paste the Script**:
    Paste the copied userscript code into the Tampermonkey script editor.
